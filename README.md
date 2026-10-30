@@ -129,3 +129,7 @@ zip -X -r "dist/id-filter-for-django-admin-$VERSION.zip" manifest.json backgroun
 Issues and pull requests are welcome at
 [github.com/mohsen158/ID-Filter-for-Django-Admin](https://github.com/mohsen158/ID-Filter-for-Django-Admin/issues).
 If your admin uses a URL layout the extension doesn't recognise, please open an issue with an example URL. Remove any private domain or data from it first.
+
+## License
+
+[MIT](LICENSE). You're free to use, copy, modify and share this extension, including in commercial projects, as long as you keep the copyright notice.
