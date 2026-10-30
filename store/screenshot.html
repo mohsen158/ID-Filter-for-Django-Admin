@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Store screenshot</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 800px; overflow: hidden; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(160deg, #eef2ff 0%, #f8fafc 60%);
+    color: #0f172a;
+    padding: 40px 56px;
+  }
+  .headline { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .headline h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.5px; }
+  .headline h1 span { color: #2563eb; }
+  .flow { display: flex; align-items: center; gap: 12px; font: 14px Menlo, monospace; }
+  .pill { padding: 7px 12px; border-radius: 8px; background: #fff; border: 1px solid #e2e8f0; color: #64748b; }
+  .pill.after { border-color: #2563eb; color: #2563eb; background: #eff6ff; font-weight: 600; }
+  .arrow { color: #2563eb; font-size: 20px; }
+
+  .window { background: #fff; border-radius: 12px; box-shadow: 0 20px 50px rgba(15,23,42,.18), 0 0 0 1px rgba(15,23,42,.08); overflow: hidden; height: 530px; }
+  .features { display: flex; gap: 16px; margin-top: 28px; }
+  .features div { flex: 1; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px 18px; font-size: 15px; color: #334155; }
+  .features b { display: block; font-size: 16px; color: #0f172a; margin-bottom: 4px; }
+  .chrome { background: #f1f3f4; padding: 10px 14px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #dadce0; }
+  .dots { display: flex; gap: 7px; }
+  .dots i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+  .omnibox { flex: 1; background: #fff; border-radius: 16px; padding: 7px 16px; font-size: 14px; color: #202124; }
+  .omnibox .host { color: #5f6368; }
+  .omnibox .q { color: #2563eb; font-weight: 600; }
+  .ext { position: relative; width: 30px; height: 30px; border-radius: 50%; background: #dbe4ff; display: grid; place-items: center; box-shadow: 0 0 0 3px #93b4ff; }
+  .ext img { width: 20px; height: 20px; }
+  .tip { position: absolute; top: 40px; right: -8px; white-space: nowrap; background: #202124; color: #fff; font-size: 12px; padding: 6px 10px; border-radius: 6px; z-index: 2; }
+
+  /* Django admin look */
+  .dj-header { background: #417690; color: #ffc; padding: 12px 40px; display: flex; justify-content: space-between; align-items: center; }
+  .dj-header .brand { font-size: 22px; font-weight: 300; color: #f5dd5d; }
+  .dj-header .user { margin-right: 240px; font-size: 11px; color: #fff; letter-spacing: .5px; text-transform: uppercase; }
+  .crumbs { background: #79aec8; color: #c4dce8; padding: 10px 40px; font-size: 14px; }
+  .crumbs b { color: #fff; font-weight: 400; }
+  .content { padding: 20px 40px; display: flex; gap: 24px; }
+  .main { flex: 1; }
+  .main h2 { font-size: 20px; font-weight: 300; color: #666; margin-bottom: 16px; }
+  .toolbar { background: #f8f8f8; padding: 8px 10px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; font-size: 13px; color: #666; display: flex; gap: 8px; align-items: center; }
+  .toolbar input { border: 1px solid #ccc; border-radius: 4px; padding: 5px 8px; width: 260px; font-size: 13px; }
+  .toolbar button { border: 1px solid #ccc; background: #fff; border-radius: 4px; padding: 5px 10px; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; background: #f6f6f6; color: #666; font-weight: 600; text-transform: uppercase; font-size: 11px; padding: 9px 10px; border-bottom: 1px solid #eee; }
+  td { padding: 11px 10px; border-bottom: 1px solid #eee; color: #333; }
+  tr.hit td { background: #fffbe6; }
+  td a { color: #447e9b; text-decoration: none; font-weight: 600; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; background: #e6f4ea; color: #1e7e34; font-size: 12px; }
+  .count { font-size: 13px; color: #666; padding: 10px; }
+  .filter { width: 220px; background: #f8f8f8; border-radius: 4px; font-size: 13px; align-self: flex-start; }
+  .filter h3 { background: #79aec8; color: #fff; font-size: 13px; font-weight: 400; padding: 8px 12px; border-radius: 4px 4px 0 0; }
+  .filter h4 { font-size: 13px; color: #666; padding: 10px 12px 4px; }
+  .filter li { list-style: none; padding: 3px 12px 3px 24px; color: #447e9b; }
+  .filter li.sel { font-weight: 700; color: #333; }
+  .filter ul { padding-bottom: 10px; }
+</style>
+</head>
+<body>
+  <div class="headline">
+    <h1>Object page → <span>filtered list</span> in one click</h1>
+    <div class="flow">
+      <span class="pill">/admin/shop/order/42/change/</span>
+      <span class="arrow">→</span>
+      <span class="pill after">/admin/shop/order/?id=42</span>
+    </div>
+  </div>
+
+  <div class="window">
+    <div class="chrome">
+      <div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
+      <div class="omnibox"><span class="host">example.com</span>/admin/shop/order/<span class="q">?id=42</span></div>
+      <div class="ext">
+        <img src="../icons/icon48.png" alt="">
+        <div class="tip">Open as filtered list (?id=) · Alt+Shift+I</div>
+      </div>
+    </div>
+
+    <div class="dj-header">
+      <div class="brand">Django administration</div>
+      <div class="user">Welcome, <b>admin</b>. View site / Log out</div>
+    </div>
+    <div class="crumbs">Home › Shop › <b>Orders</b></div>
+
+    <div class="content">
+      <div class="main">
+        <h2>Select order to change</h2>
+        <div class="toolbar"><input placeholder="Search"><button>Search</button><span>1 result (250 total)</span></div>
+        <table>
+          <thead><tr><th>ID</th><th>Customer</th><th>Status</th><th>Amount</th><th>Created</th></tr></thead>
+          <tbody>
+            <tr class="hit"><td><a>42</a></td><td>jane.doe</td><td><span class="badge">Paid</span></td><td>129.90</td><td>Oct 12, 2026, 3:14 p.m.</td></tr>
+          </tbody>
+        </table>
+        <div class="count">1 order</div>
+      </div>
+      <div class="filter">
+        <h3>Filter</h3>
+        <h4>By status</h4>
+        <ul><li class="sel">All</li><li>Pending</li><li>Paid</li><li>Shipped</li><li>Cancelled</li></ul>
+        <h4>By created</h4>
+        <ul><li class="sel">Any date</li><li>Today</li><li>Past 7 days</li><li>This month</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div><b>Any Django admin</b>Works on every site, any app and model.</div>
+    <div><b>Click or Alt+Shift+I</b>Toolbar button or keyboard shortcut.</div>
+    <div><b>No data collected</b>Reads the current tab URL only when you click.</div>
+  </div>
+</body>
+</html>

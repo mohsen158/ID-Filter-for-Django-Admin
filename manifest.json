@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "ID Filter for Django Admin",
+  "version": "1.0.0",
+  "description": "One click turns a Django admin object page (/admin/app/model/<id>/change/) into the changelist filtered by that id (?id=<id>).",
+  "permissions": ["activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Open as filtered list (?id=)",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+I",
+        "mac": "Alt+Shift+I"
+      },
+      "description": "Convert current admin object page to ?id= list"
+    }
+  }
+}
